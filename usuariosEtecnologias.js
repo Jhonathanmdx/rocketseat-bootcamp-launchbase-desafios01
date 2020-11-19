@@ -1,7 +1,3 @@
-//programa que armazena um array de usuários (objetos),
-//cada usuário tem um nome e suas tecnologias (novo array) 
-
-
 const usuarios = [
   { 
       nome: "Carlos",
@@ -16,7 +12,24 @@ const usuarios = [
       tecnologias: ["HTML", "Node.js"]
   }
 ]
-      for ( let i = 0; i < usuarios.length; i ++ ) {          // busca pelo nome do usuario e tecnologia 
-        console.log(`${usuarios[i].nome} trabalha com ${usuarios[i].tecnologias}`)
-      }
 
+for (let usuario of usuarios) {
+  console.log(`${usuario.nome} trabalha com ${usuario.tecnologias.join(', ')}`)
+}
+
+// Busca por tecnologia
+function checaSeUsuarioUsaCSS(usuario) {
+  for (let tecnologia of usuario.tecnologias) {
+      if (tecnologia == 'CSS') return true
+  }
+
+  return false
+}
+
+for (let i = 0; i < usuarios.length; i++) {
+  const usuarioTrabalhaComCSS = checaSeUsuarioUsaCSS(usuarios[i])
+
+  if(usuarioTrabalhaComCSS) {
+      console.log(`O usuário ${usuarios[i].nome} trabalha com CSS`)
+  }
+}
